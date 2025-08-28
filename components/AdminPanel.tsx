@@ -1,15 +1,10 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { initialContent, saveContent } from '../utils/contentStore';
 
-type OrderChannel = {
-  [key: string]: any;
-};
-
-type ContentType = {
-  orderChannels?: Record<string, OrderChannel>;
-  [key: string]: any;
-};
+type OrderChannel = { [key: string]: any };
+type ContentType = { orderChannels?: Record<string, OrderChannel>; [key: string]: any };
 
 interface AdminPanelProps {
   isOpen?: boolean;
@@ -17,45 +12,52 @@ interface AdminPanelProps {
 }
 
 export default function AdminPanel({ isOpen = true, onClose }: AdminPanelProps) {
-  // Hooks her zaman en üstte çağrılır
-  const [content, setContent] = useState<ContentType>({
-    orderChannels: {}
-  });
 
-  // Eğer panel kapalıysa hiç render etme
+  // Hooks en üstte
+  const [content, setContent] = useState<ContentType>({ orderChannels: {} });
+  const [loaded, setLoaded] = useState(false);
+
+  // Panel kapalıysa hiç render etme
   if (!isOpen) return null;
+
+  // İlk yüklemede content.json veya localStorage oku
+  useEffect(() => {
+    (async () => {
+      const data = await initialContent();
+      setContent(prev => ({ ...prev, ...data }));
+      setLoaded(true);
+    })();
+  }, []);
+
+  // Otomatik kaydet (localStorage’a)
+  useEffect(() => {
+    if (!loaded) return;
+    saveContent(content);
+  }, [content, loaded]);
 
   const updateChannelField = (channel: string, field: string, value: any) => {
     setContent(prev => {
       const prevOrder = (prev?.orderChannels ?? {}) as Record<string, any>;
       const prevChannel = (prevOrder[channel] ?? {}) as Record<string, any>;
-
       return {
         ...prev,
         orderChannels: {
           ...prevOrder,
-          [channel]: {
-            ...prevChannel,
-            [field]: value
-          }
-        }
+          [channel]: { ...prevChannel, [field]: value },
+        },
       };
     });
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Arka plan */}
-      <div
-        className="absolute inset-0 bg-black/40"
-        onClick={onClose}
-        aria-hidden="true"
-      />
+  const toggleActive = (channel: string, value: boolean) => {
+    updateChannelField(channel, 'active', value);
+  };
 
-      {/* Panel kutusu */}
-      <div className="relative z-10 w-full max-w-xl rounded-xl shadow-2xl bg-white p-6">
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-xl font-bold">Admin Paneli</h2>
+  return (
+    <div className="p-6 max-w-3xl mx-auto bg-white rounded-xl shadow">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-xl font-bold">Admin Paneli</h2>
+        {onClose && (
           <button
             type="button"
             onClick={onClose}
@@ -64,39 +66,91 @@ export default function AdminPanel({ isOpen = true, onClose }: AdminPanelProps) 
           >
             Kapat
           </button>
-        </div>
-
-        {/* Örnek input alanları */}
-        <div className="space-y-4">
-          <label className="block">
-            <span className="text-gray-700">Yemeksepeti Linki</span>
-            <input
-              type="text"
-              className="mt-1 block w-full border rounded-md p-2"
-              value={content.orderChannels?.yemeksepeti?.url ?? ""}
-              onChange={e =>
-                updateChannelField("yemeksepeti", "url", e.target.value)
-              }
-            />
-          </label>
-
-          <label className="block">
-            <span className="text-gray-700">Getir Linki</span>
-            <input
-              type="text"
-              className="mt-1 block w-full border rounded-md p-2"
-              value={content.orderChannels?.getir?.url ?? ""}
-              onChange={e =>
-                updateChannelField("getir", "url", e.target.value)
-              }
-            />
-          </label>
-        </div>
-
-        <pre className="mt-6 p-4 bg-gray-100 rounded-md text-sm overflow-auto">
-          {JSON.stringify(content, null, 2)}
-        </pre>
+        )}
       </div>
+
+      <div className="grid sm:grid-cols-2 gap-6">
+        {/* WhatsApp */}
+        <section className="space-y-2 border rounded-lg p-4">
+          <h3 className="font-semibold">WhatsApp</h3>
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={content.orderChannels?.whatsapp?.active ?? true}
+              onChange={(e) => toggleActive('whatsapp', e.target.checked)}
+            />
+            <span>Aktif</span>
+          </label>
+          <input
+            placeholder="Telefon (örn. 905xx...)"
+            className="border rounded p-2 w-full"
+            value={content.orderChannels?.whatsapp?.phone ?? ''}
+            onChange={(e) => updateChannelField('whatsapp', 'phone', e.target.value)}
+          />
+        </section>
+
+        {/* Yemeksepeti */}
+        <section className="space-y-2 border rounded-lg p-4">
+          <h3 className="font-semibold">Yemeksepeti</h3>
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={content.orderChannels?.yemeksepeti?.active ?? true}
+              onChange={(e) => toggleActive('yemeksepeti', e.target.checked)}
+            />
+            <span>Aktif</span>
+          </label>
+          <input
+            placeholder="Yemeksepeti URL"
+            className="border rounded p-2 w-full"
+            value={content.orderChannels?.yemeksepeti?.url ?? ''}
+            onChange={(e) => updateChannelField('yemeksepeti', 'url', e.target.value)}
+          />
+        </section>
+
+        {/* Getir */}
+        <section className="space-y-2 border rounded-lg p-4">
+          <h3 className="font-semibold">Getir</h3>
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={content.orderChannels?.getir?.active ?? true}
+              onChange={(e) => toggleActive('getir', e.target.checked)}
+            />
+            <span>Aktif</span>
+          </label>
+          <input
+            placeholder="Getir URL"
+            className="border rounded p-2 w-full"
+            value={content.orderChannels?.getir?.url ?? ''}
+            onChange={(e) => updateChannelField('getir', 'url', e.target.value)}
+          />
+        </section>
+
+        {/* Telefon */}
+        <section className="space-y-2 border rounded-lg p-4">
+          <h3 className="font-semibold">Telefon</h3>
+          <label className="flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={content.orderChannels?.phone?.active ?? true}
+              onChange={(e) => toggleActive('phone', e.target.checked)}
+            />
+            <span>Aktif</span>
+          </label>
+          <input
+            placeholder="Telefon (örn. 0 212 ...)"
+            className="border rounded p-2 w-full"
+            value={content.orderChannels?.phone?.number ?? ''}
+            onChange={(e) => updateChannelField('phone', 'number', e.target.value)}
+          />
+        </section>
+      </div>
+
+      <p className="text-xs text-gray-500 mt-4">
+        Yapılan tüm değişiklikler tarayıcınıza <b>otomatik kaydedilir</b> (localStorage).
+        Sunucuya yazılmaz.
+      </p>
     </div>
   );
 }

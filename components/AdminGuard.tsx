@@ -1,0 +1,1 @@
+'use client';import React from'react';import{useAdminAuth}from'../hooks/useAdmin';import AdminAuth from'./AdminAuth';export default function AdminGuard({children}:{children:React.ReactNode}){const{authed}=useAdminAuth();if(!authed)return(<div className="min-h-[60vh] flex items-center justify-center bg-gray-50"><AdminAuth/></div>);return<>{children}</>}

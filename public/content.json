@@ -1,0 +1,20 @@
+{
+  "orderChannels": {
+    "whatsapp": {
+      "active": true,
+      "phone": "+90545 509 3462"
+    },
+    "yemeksepeti": {
+      "active": true,
+      "url": " https://www.yemeksepeti.com/restaurant/kw28/borcan-kebap-pide-lahmacun-salonu "
+    },
+    "getir": {
+      "active": true,
+      "url": " https://getir.com/yemek/restoran/borcan-kebap-pide-lahmacun-salonu-mustafa-kemalpasa-mah-avcilar-istanbul/ "
+    },
+    "phone": {
+      "active": true,
+      "number": " +90 212 423 3727"
+    }
+  }
+}

@@ -1,47 +1,36 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Pacifico } from "next/font/google";
 import "./globals.css";
-import { CartProvider } from '../components/CartProvider';
-
-const pacifico = Pacifico({
-  weight: '400',
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-pacifico',
-})
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import { CartProvider } from "../components/CartProvider";
+import { pacifico, geistSans, geistMono } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Borcan Kebap - Geleneksel Türk Mutfağı",
-  description: "1985'ten beri hizmet veren Borcan Kebap'ta geleneksel Türk lezzetlerini keşfedin. Rezervasyon ve online sipariş imkanı.",
+  description:
+    "1985'ten beri hizmet veren Borcan Kebap'ta geleneksel Türk lezzetlerini keşfedin. Rezervasyon ve online sipariş imkanı.",
+  metadataBase:
+    process.env.NEXT_PUBLIC_SITE_URL
+      ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
+      : undefined,
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr" suppressHydrationWarning={true}>
+    <html lang="tr" suppressHydrationWarning>
       <head>
-        <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+        {/* İkon seti (isteğe bağlı; çevrimdışı kalmak istersen bunu da kaldır) */}
+        <link
+          href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+          rel="stylesheet"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased`}
       >
-        <CartProvider>
-          {children}
-        </CartProvider>
+        <CartProvider>{children}</CartProvider>
       </body>
     </html>
   );
 }
+
