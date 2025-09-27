@@ -1,8 +1,10 @@
+// app/fonts.ts
 import localFont from "next/font/local";
 
-/** Pacifico (regular) */
+/** Dosyalar artık app/fontfiles altında, göreli path kullanıyoruz. */
+
 export const pacifico = localFont({
-  src: "/fonts/pacifico-regular.woff2",
+  src: "./fontfiles/Pacifico-Regular.ttf", // <-- .ttf olarak düzeltildi
   variable: "--font-pacifico",
   style: "normal",
   weight: "400",
@@ -10,9 +12,8 @@ export const pacifico = localFont({
   preload: true,
 });
 
-/** Geist Sans (regular) */
 export const geistSans = localFont({
-  src: "/fonts/geist-regular.woff2",
+  src: "./fontfiles/geist-regular.woff2",
   variable: "--font-geist-sans",
   style: "normal",
   weight: "400",
@@ -20,13 +21,11 @@ export const geistSans = localFont({
   preload: true,
 });
 
-/** Geist Mono (regular) */
 export const geistMono = localFont({
-  src: "/fonts/geist-mono-regular.woff2",
+  src: "./fontfiles/geist-mono-regular.woff2",
   variable: "--font-geist-mono",
   style: "normal",
   weight: "400",
   display: "swap",
   preload: true,
 });
-

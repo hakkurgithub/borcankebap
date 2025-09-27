@@ -1,0 +1,66 @@
+npm verbose cli C:\Program Files\node.exe C:\Program Files\node_modules\npm\bin\npm-cli.js
+npm info using npm@11.4.2
+npm info using node@v24.4.1
+npm verbose title npm run build
+npm verbose argv "run" "build" "--loglevel" "verbose"
+npm verbose logfile logs-max:10 dir:C:\Users\hakkur\AppData\Local\npm-cache\_logs\2025-08-29T16_30_56_457Z-
+npm verbose logfile C:\Users\hakkur\AppData\Local\npm-cache\_logs\2025-08-29T16_30_56_457Z-debug-0.log
+
+> borcan-kebap@1.0.0 build
+> next build
+
+   ▲ Next.js 15.3.2
+   - Environments: .env
+
+   Creating an optimized production build ...
+Client network socket disconnected before secure TLS connection was established
+
+Retrying 1/3...
+Client network socket disconnected before secure TLS connection was established
+
+Retrying 1/3...
+Client network socket disconnected before secure TLS connection was established
+
+Retrying 1/3...
+Client network socket disconnected before secure TLS connection was established
+
+Retrying 1/3...
+Client network socket disconnected before secure TLS connection was established
+
+Retrying 1/3...
+ ⚠ Compiled with warnings in 30.0s
+
+./app/fonts.ts
+Attempted import error: 'Geist' is not exported from 'geist/font' (imported as 'Geist').
+
+Import trace for requested module:
+./app/fonts.ts
+./app/layout.tsx
+
+./app/fonts.ts
+Attempted import error: 'Geist_Mono' is not exported from 'geist/font' (imported as 'Geist_Mono').
+
+Import trace for requested module:
+./app/fonts.ts
+./app/layout.tsx
+
+ ✓ Compiled successfully in 53s
+   Linting and checking validity of types ...
+Failed to compile.
+
+./app/fonts.ts:2:10
+Type error: Module '"geist/font"' has no exported member 'Geist'.
+
+[0m [90m 1 |[39m [90m// app/fonts.ts[39m[0m
+[0m[31m[1m>[22m[39m[90m 2 |[39m [36mimport[39m { [33mGeist[39m[33m,[39m [33mGeist_Mono[39m } [36mfrom[39m [32m"geist/font"[39m[33m;[39m[0m
+[0m [90m   |[39m          [31m[1m^[22m[39m[0m
+[0m [90m 3 |[39m [36mimport[39m { [33mPacifico[39m } [36mfrom[39m [32m"next/font/google"[39m[33m;[39m[0m
+[0m [90m 4 |[39m[0m
+[0m [90m 5 |[39m [36mexport[39m [36mconst[39m geist [33m=[39m [33mGeist[39m({[0m
+Next.js build worker exited with code: 1 and signal: null
+npm verbose cwd D:\borcan kebap
+npm verbose os Windows_NT 10.0.19045
+npm verbose node v24.4.1
+npm verbose npm  v11.4.2
+npm verbose exit 1
+npm verbose code 1

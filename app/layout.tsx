@@ -1,7 +1,9 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 import { CartProvider } from "../components/CartProvider";
 import { pacifico, geistSans, geistMono } from "./fonts";
+import Header from "../components/Header"; // Header'ı eklendi
 
 export const metadata: Metadata = {
   title: "Borcan Kebap - Geleneksel Türk Mutfağı",
@@ -19,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="tr" suppressHydrationWarning>
       <head>
-        {/* İkon seti (isteğe bağlı; çevrimdışı kalmak istersen bunu da kaldır) */}
+        {/* Tamamen offline kalmak istersen bu linki kaldırabilirsin */}
         <link
           href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
           rel="stylesheet"
@@ -28,9 +30,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} antialiased`}
       >
-        <CartProvider>{children}</CartProvider>
+        <CartProvider>
+          <Header /> {/* Header'ı burada ekledik */}
+          {children}
+        </CartProvider>
       </body>
     </html>
   );
 }
-

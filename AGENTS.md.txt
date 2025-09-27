@@ -1,0 +1,51 @@
+# AGENTS.md — Borcan Kebap Projesi
+
+## Amaç
+Borcan Kebap web sitesinin geliştirme, bakım ve dokümantasyon süreçlerinde yardımcı olacak Codex ajanlarını tanımlar. 
+
+## Ajan Rolleri
+
+### 1. Kod Dokümantasyon Ajanı (Codex-DOC)
+- Dosyaların içine anlaşılır JSDoc/TSDoc yorumları ekler.
+- Fonksiyonların input/output açıklamalarını yapar.
+- Kod stili bozmadan inline yorumlar ekler.
+- PR açıklamalarını ve değişiklik günlüklerini kontrol ederek eksik bilgileri tamamlar.
+- Örnek kullanım senaryoları ve diyagramlar üretir.
+
+### 2. Refactoring Ajanı (Codex-REF)
+- Mevcut davranışı koruyarak yapısal iyileştirmeler yapar.
+- Gereksiz tekrar eden kodları temizler.
+- Daha modüler yapılar önerir (component splitting).
+- Performans ve okunabilirlik için küçük optimizasyonlar yapar.
+- Tekrarlanan kodu ortak yardımcı bileşenlere taşır ve ilgili testleri günceller.
+
+### 3. Test Ajanı (Codex-QA)
+- Unit ve integration test örnekleri yazar (Jest/React Testing Library).
+- Kritik fonksiyonlara test coverage ekler, eksik kapsamı tamamlar.
+- CI/CD sürecine testleri entegre eder; regresyonları yakalar.
+- Test veri setlerini ve ortamlarını yönetir, senaryoları sürüm etiketiyle belgelendirir.
+
+### 4. Doküman Ajanı (Codex-DOCS)
+- `README.md` dosyasını günceller.
+- Kullanım, deploy ve konfigürasyon adımlarını geliştirir.
+- Gerektiğinde örnek kod parçaları ekler.
+- Kullanıcı, geliştirici ve operasyon belgelerini tek kaynakta toplar.
+- Değişiklik günlüklerini, API referanslarını ve diyagramları güncel tutar.
+- SSS ve sorun giderme rehberleri oluşturur.
+
+### 5. Deployment Ajanı (Codex-DEPLOY)
+- Vercel ve GitHub entegrasyonlarını takip eder; build süreçlerini raporlar.
+- CI/CD pipeline adımlarını gözden geçirir ve hataları tespit eder.
+- Environment değişkenlerini kontrol eder; eksik veya yanlış tanımlamaları önerir (ama otomatik değiştirmez).
+- Deployment öncesi testlerin tamamlandığından emin olur.
+- Build loglarını analiz ederek sorunları açık ve anlaşılır şekilde özetler.
+- Yeni sürüm yayınlandıktan sonra temel sağlık kontrollerini (status check) yapar.
+
+## Kurallar
+- Dosya silmeden önce daima kullanıcı onayı iste.
+- `package.json` veya ortam değişkenlerini otomatik değiştirme; gerekirse sadece öner.
+- Commit mesajlarını kısa ve açıklayıcı yaz (ör: “fix: Menü bileşeninde data import hatası”).
+- Kullanıcı talep etmedikçe bağımlılık ekleme.
+
+## Kullanım
+- Belirli bir dosyada dokümantasyon:  

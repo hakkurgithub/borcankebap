@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -75,7 +74,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Delicious%20Turkish%20Adana%20kebab%20on%20skewers%20with%20rice%20and%20grilled%20vegetables%20on%20white%20plate%2C%20traditional%20presentation%2C%20professional%20food%20photography%2C%20appetizing%20close-up%20shot&width=400&height=300&seq=adana1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek%20resimleri/Adanaporsiyon.jpg",
   },
   {
     id: "k-02",
@@ -84,7 +83,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Kebaplar & Izgaralar" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20Urfa%20kebab%20grilled%20meat%20skewers%20with%20bulgur%20rice%20and%20salad%2C%20traditional%20presentation%20on%20white%20plate%2C%20professional%20food%20photography&width=400&height=300&seq=urfa1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek%20resimleri/Adanaporsiyon.jpg",
   },
   {
     id: "k-03",
@@ -93,17 +92,17 @@ const defaultAllMenuItems = [
     price: 600,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20Beyti%20kebab%20wrapped%20in%20lavash%20bread%20with%20yogurt%20sauce%20on%20white%20plate%20professional%20food%20photography&width=400&height=300&seq=beyti1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Beyti%20Sarma.jpg",
   },
   {
-    id: "k-04",
-    name: "İskender Kebap",
-    description: "Yoğurt ve tereyağı soslu özel kebap",
-    price: 500,
-    category: "Kebaplar & Izgaralar" as const,
-    rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20Iskender%20kebab%20with%20yogurt%20sauce%20and%20butter%20over%20bread%20slices%20traditional%20presentation%20on%20white%20plate%20professional%20food%20photography&width=400&height=300&seq=iskender1&orientation=landscape",
-  },
+  id: "k-04",
+  name: "İskender Kebap",
+  description: "Yoğurt ve tereyağı soslu özel kebap",
+  price: 500,
+  category: "Kebaplar & Izgaralar" as const,
+  rating: 5,
+  image: "https://raw.githubusercontent.com/hakkurgithub/images/main/iskender%20Kebap.jpeg"
+},
   {
     id: "k-05",
     name: "Et Şiş",
@@ -138,7 +137,7 @@ const defaultAllMenuItems = [
     price: 350,
     category: "Kebaplar & Izgaralar" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Traditional%20Turkish%20grilled%20meatballs%20kofte%20with%20rice%20and%20salad%20on%20white%20plate%20homemade%20style%20professional%20food%20photography&width=400&height=300&seq=kofte1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/izgara%20k%C3%B6fte.jpeg",
   },
   {
     id: "k-09",
@@ -147,7 +146,7 @@ const defaultAllMenuItems = [
     price: 800,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20mixed%20grill%20platter%20with%20various%20kebabs%20and%20meatballs%20on%20large%20white%20plate%20generous%20portion%20professional%20food%20photography&width=400&height=300&seq=karisikizgara1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/karisik-izgara.jpg",
   },
   {
     id: "k-10",
@@ -165,7 +164,7 @@ const defaultAllMenuItems = [
     price: 550,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20cop%20shish%20small%20meat%20cubes%20on%20thin%20skewers%20with%20spices%20grilled%20perfectly%20on%20white%20plate%20professional%20food%20photography&width=400&height=300&seq=copsis1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/cop-sis.jpg",
   },
   {
     id: "k-12",
@@ -185,7 +184,7 @@ const defaultAllMenuItems = [
     price: 130,
     category: "Pide & Lahmacun" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Traditional%20Turkish%20lahmacun%20thin%20flatbread%20with%20minced%20meat%20topping%20and%20fresh%20herbs%2C%20served%20with%20lemon%20on%20white%20background&width=400&height=300&seq=lahmacun1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Lahmacun.jpg",
   },
   {
     id: "p-02",
@@ -194,7 +193,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Pide & Lahmacun" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20pide%20bread%20with%20diced%20meat%20cubes%20golden%20brown%20crust%20boat%20shaped%20flatbread%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=kusbasi1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Kusbasili Pide.jpg",
   },
   {
     id: "p-03",
@@ -203,7 +202,7 @@ const defaultAllMenuItems = [
     price: 400,
     category: "Pide & Lahmacun" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20cheese%20pide%20bread%20boat%20shaped%20with%20melted%20kashar%20cheese%20golden%20brown%20crust%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=kasarli1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Kasarlı Pide.jpg",
   },
   {
     id: "p-04",
@@ -212,7 +211,7 @@ const defaultAllMenuItems = [
     price: 400,
     category: "Pide & Lahmacun" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20mixed%20pide%20bread%20with%20meat%20cheese%20and%20egg%20boat%20shaped%20flatbread%20golden%20brown%20crust%20on%20white%20background&width=400&height=300&seq=karisik1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/karisikpide.jpeg",
   },
   {
     id: "p-05",
@@ -221,7 +220,7 @@ const defaultAllMenuItems = [
     price: 380,
     category: "Pide & Lahmacun" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20sucuklu%20pide%20bread%20with%20Turkish%20sausage%20and%20cheese%20boat%20shaped%20golden%20crust%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=sucuklu1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/sucuklu-kasarli-pide.jpg",
   },
   {
     id: "p-06",
@@ -239,7 +238,7 @@ const defaultAllMenuItems = [
     price: 420,
     category: "Pide & Lahmacun" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20minced%20meat%20pide%20bread%20boat%20shaped%20with%20spiced%20ground%20meat%20golden%20crust%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=kiymali1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/Kıymalı Pide.jpg", 
   },
   {
     id: "p-08",
@@ -248,7 +247,7 @@ const defaultAllMenuItems = [
     price: 25,
     category: "Pide & Lahmacun" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20open%20ayran%20drink%20with%20cucumber%20and%20mint%20in%20glass%20traditional%20refreshing%20beverage%20on%20white%20background%20professional%20photography&width=400&height=300&seq=acikayran1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/acık ayran.jpg",
   },
 
   // Döner (6 adet)
@@ -259,7 +258,7 @@ const defaultAllMenuItems = [
     price: 500,
     category: "Döner" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20beef%20doner%20kebab%20slices%20in%20pita%20bread%20with%20vegetables%20and%20sauce%20on%20white%20plate%20professional%20food%20photography&width=400&height=300&seq=etdoner1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/Porsiyon et döner.jpg",
   },
   {
     id: "d-02",
@@ -268,7 +267,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Döner" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20doner%20kebab%20portion%20with%20rice%20pilaf%20and%20salad%20on%20white%20plate%20traditional%20presentation%20professional%20food%20photography&width=400&height=300&seq=donerporsiyon1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/pilav ustu et doner.jpg",
   },
   {
     id: "d-03",
@@ -277,7 +276,7 @@ const defaultAllMenuItems = [
     price: 300,
     category: "Döner" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20chicken%20doner%20kebab%20in%20warm%20pita%20bread%20with%20fresh%20vegetables%20and%20yogurt%20sauce%20on%20white%20background&width=400&height=300&seq=tavukdoner1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/Durum doner.png",
   },
   {
     id: "d-04",
@@ -286,7 +285,7 @@ const defaultAllMenuItems = [
     price: 400,
     category: "Döner" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20chicken%20doner%20kebab%20slices%20with%20rice%20and%20vegetables%20on%20white%20plate%20healthy%20option%20professional%20food%20photography&width=400&height=300&seq=tavukdoner2&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/Tavuk Doner.jpg",
   },
   {
     id: "d-05",
@@ -295,7 +294,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Döner" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20doner%20kebab%20sandwich%20in%20bread%20with%20vegetables%20and%20sauce%20street%20food%20style%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=ekmekdoner1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/ekmek arasi doner.jpg",
   },
   {
     id: "d-06",
@@ -304,7 +303,7 @@ const defaultAllMenuItems = [
     price: 550,
     category: "Döner" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20mixed%20doner%20kebab%20beef%20and%20chicken%20combination%20with%20rice%20and%20salad%20on%20white%20plate%20generous%20portion%20professional%20food%20photography&width=400&height=300&seq=ciftedonet1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/cifte doner.png",
   },
 
   // Dürüm (6 adet)
@@ -315,7 +314,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Dürüm" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20Adana%20durum%20wrap%20with%20grilled%20meat%20and%20vegetables%20wrapped%20in%20lavash%20bread%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=adanadurum1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana durum.jpg",
   },
   {
     id: "dr-02",
@@ -324,7 +323,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20chicken%20durum%20wrap%20with%20marinated%20chicken%20pieces%20and%20fresh%20vegetables%20in%20lavash%20bread%20on%20white%20plate&width=400&height=300&seq=tavukdurum1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana durum.jpg",
   },
   {
     id: "dr-03",
@@ -333,7 +332,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20chicken%20shish%20durum%20wrap%20with%20grilled%20chicken%20pieces%20and%20vegetables%20in%20lavash%20bread%20on%20white%20background&width=400&height=300&seq=tavuksisdurum1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Tavuk sis durum.png",
   },
   {
     id: "dr-04",
@@ -342,7 +341,7 @@ const defaultAllMenuItems = [
     price: 220,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20meatball%20durum%20wrap%20with%20grilled%20kofte%20and%20fresh%20vegetables%20in%20lavash%20bread%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=koftedurum1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/kofte-durum.jpg",
   },
   {
     id: "dr-05",
@@ -351,7 +350,7 @@ const defaultAllMenuItems = [
     price: 350,
     category: "Dürüm" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20beef%20shish%20durum%20wrap%20with%20grilled%20meat%20cubes%20and%20vegetables%20in%20lavash%20bread%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=etsisdurum1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Et sis Durum.png",
   },
   {
     id: "dr-06",
@@ -360,7 +359,7 @@ const defaultAllMenuItems = [
     price: 200,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20chicken%20wing%20durum%20wrap%20with%20grilled%20wings%20and%20vegetables%20in%20lavash%20bread%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=kanatdurum1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Tavuk Kanat Durum.png",
   },
 
   // Çorbalar (4 adet)
@@ -371,7 +370,7 @@ const defaultAllMenuItems = [
     price: 40,
     category: "Çorbalar" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Traditional%20Turkish%20red%20lentil%20soup%20in%20white%20bowl%20with%20lemon%20slice%20garnish%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=mercimek1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/mercimek corbasi.jpg",
   },
   {
     id: "c-02",
@@ -556,7 +555,7 @@ const defaultContent: ContentData = {
   restaurantName: 'Borcan Kebap',
   heroTitle: 'Geleneksel Türk Lezzetleri',
   heroSubtitle: 'En taze malzemeler ile hazırlanan nefis kebaplarımızı denemeye davetlisiniz',
-  aboutText: '1985 yılından bu yana İstanbul\'un Avcılar ilçesinde hizmet veren Borcan Kebap, geleneksel Türk mutfağının eşsiz lezzetlerini modern sunum ile buluşturuyor. Ailemizin 40 yıllık deneyimi ve özel tariflerimizle her lokmada otantik tatları yaşayacaksınız.',
+  aboutText: 'Ailemizin 40 yıllık deneyimi ile size en lezzetli kebapları sunuyoruz.',
   phone: '+90 212 423 3727',
   address: 'Beyoğlu Caddesi No: 35/A, Parseller, Avcılar/İstanbul',
   orderChannels: {
@@ -585,7 +584,7 @@ const defaultContent: ContentData = {
       price: 450,
       description: 'Özel baharatlarla hazırlanmış geleneksel Adana kebap',
       category: 'Kebaplar',
-      image: 'https://readdy.ai/api/search-image?query=Delicious%20Turkish%20Adana%20kebab%20on%20skewers%2C%20perfectly%20grilled%20meat%2C%20traditional%20presentation%20with%20rice%20pilaf%2C%20grilled%20vegetables%2C%20white%20clean%20background%2C%20professional%20food%20photography%2C%20appetizing%20close-up%20shot&width=400&height=300&seq=adana1&orientation=landscape'
+      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/yemek%20resimleri/Adanaporsiyon.jpg'
     },
     {
       id: '2',
@@ -593,7 +592,7 @@ const defaultContent: ContentData = {
       price: 400,
       description: 'Kaşar, sucuk ve yumurtalı özel pide',
       category: 'Pideler',
-      image: 'https://readdy.ai/api/search-image?query=Fresh%20Turkish%20pide%20bread%20with%20cheese%20and%20meat%20toppings%2C%20golden%20brown%20crust%2C%20traditional%20boat-shaped%20flatbread%2C%20melted%20cheese%2C%20white%20clean%20background%2C%20professional%20food%20photography%2C%20appetizing%20presentation&width=400&height=300&seq=pide1&orientation=landscape'
+      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/karisikpide.jpeg'
     },
     {
       id: '3',
@@ -601,7 +600,7 @@ const defaultContent: ContentData = {
       price: 130,
       description: 'İnce hamur üzerine özel kıymalı lahmacun',
       category: 'Lahmacunlar',
-      image: 'https://readdy.ai/api/search-image?query=Traditional%20Turkish%20lahmacun%20with%20fresh%20herbs%2C%20thin%20crispy%20flatbread%2C%20minced%20meat%20topping%2C%20served%20with%20lemon%20and%20parsley%2C%20white%20clean%20background%2C%20professional%20food%20photography%2C%20authentic%20presentation&width=400&height=300&seq=lahmacun1&orientation=landscape'
+      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/Lahmacun.jpg'
     },
     {
       id: '4',
@@ -609,7 +608,7 @@ const defaultContent: ContentData = {
       price: 500,
       description: 'Taze döner eti, pilav ve salata ile servis',
       category: 'Kebaplar',
-      image: 'https://readdy.ai/api/search-image?query=Fresh%20Turkish%20doner%20kebab%20slices%2C%20perfectly%20seasoned%20meat%2C%20served%20in%20warm%20pita%20bread%20with%20vegetables%2C%20white%20clean%20background%2C%20professional%20food%20photography%2C%20appetizing%20close-up%20shot&width=400&height=300&seq=doner1&orientation=landscape'
+      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/Porsiyon et döner.jpg'
     }
   ],
   allMenuItems: defaultAllMenuItems,
@@ -641,7 +640,7 @@ const defaultContent: ContentData = {
   ],
   socialMedia: {
     facebook: 'https://www.facebook.com/brcnkbp',
-    instagram: 'https://www.instagram.com/borcankebap/',
+    instagram: 'https://www.instagram.com/borcan_kebap_pide_lahmacun/',
     twitter: '#'
   }
 };
