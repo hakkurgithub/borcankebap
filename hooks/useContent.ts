@@ -30,7 +30,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Adanaporsiyon.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana-porsiyon.jpg",
   },
   {
     id: "k-02",
@@ -39,7 +39,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Kebaplar & Izgaralar" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Adanaporsiyon.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana-porsiyon.jpg",
   },
   {
     id: "k-03",
@@ -48,7 +48,7 @@ const defaultAllMenuItems = [
     price: 600,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Beyti%20Sarma.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/beyti-sarma.jpg",
   },
   {
     id: "k-04",
@@ -57,7 +57,7 @@ const defaultAllMenuItems = [
     price: 500,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/iskender%20Kebap.jpeg"
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/iskender-kebap.jpeg"
   },
   {
     id: "k-05",
@@ -93,7 +93,7 @@ const defaultAllMenuItems = [
     price: 350,
     category: "Kebaplar & Izgaralar" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/izgara%20k%C3%B6fte.jpeg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/izgara-kofte.jpeg",
   },
   {
     id: "k-09",
@@ -140,7 +140,7 @@ const defaultAllMenuItems = [
     price: 130,
     category: "Pide & Lahmacun" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Lahmacun.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/lahmacun.jpg",
   },
   {
     id: "p-02",
@@ -149,7 +149,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Pide & Lahmacun" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Kusbasili-Pide.jpeg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/kusbasili-pide.jpg",
   },
   {
     id: "p-03",
@@ -158,7 +158,7 @@ const defaultAllMenuItems = [
     price: 400,
     category: "Pide & Lahmacun" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Kasarlı Pide.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/kasarli-pide.jpg",
   },
   {
     id: "p-04",
@@ -167,7 +167,7 @@ const defaultAllMenuItems = [
     price: 400,
     category: "Pide & Lahmacun" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/karisikpide.jpeg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/karisik-pide.jpeg",
   },
   {
     id: "p-05",
@@ -194,7 +194,7 @@ const defaultAllMenuItems = [
     price: 420,
     category: "Pide & Lahmacun" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/Kıymalı Pide.jpg", 
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/kiymali-pide.jpg", 
   },
   {
     id: "p-08",
@@ -203,7 +203,7 @@ const defaultAllMenuItems = [
     price: 25,
     category: "Pide & Lahmacun" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/acık ayran.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/acik-ayran.jpg",
   },
 
   // Döner (6 adet)
@@ -214,7 +214,7 @@ const defaultAllMenuItems = [
     price: 500,
     category: "Döner" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/Porsiyon et döner.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/porsiyon-et-doner.jpg",
   },
   {
     id: "d-02",
@@ -223,7 +223,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Döner" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/pilav ustu et doner.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/pilav-ustu-et-doner.jpg",
   },
   {
     id: "d-03",
@@ -232,7 +232,7 @@ const defaultAllMenuItems = [
     price: 300,
     category: "Döner" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/Durum doner.png",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/durum-doner.png",
   },
   {
     id: "d-04",
@@ -241,7 +241,7 @@ const defaultAllMenuItems = [
     price: 400,
     category: "Döner" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/Tavuk Doner.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/tavuk-doner.jpg",
   },
   {
     id: "d-05",
@@ -250,7 +250,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Döner" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/ekmek arasi doner.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/ekmek-arasi-doner.jpg",
   },
   {
     id: "d-06",
@@ -259,7 +259,7 @@ const defaultAllMenuItems = [
     price: 550,
     category: "Döner" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/cifte doner.png",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/cifte-doner.png",
   },
 
   // Dürüm (6 adet)
@@ -270,7 +270,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Dürüm" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana durum.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana-durum.jpg",
   },
   {
     id: "dr-02",
@@ -288,7 +288,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Tavuk sis durum.png",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/tavuk-sis-durum.png",
   },
   {
     id: "dr-04",
@@ -306,7 +306,7 @@ const defaultAllMenuItems = [
     price: 350,
     category: "Dürüm" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Et sis Durum.png",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/et-sis-durum.png",
   },
   {
     id: "dr-06",
@@ -315,7 +315,7 @@ const defaultAllMenuItems = [
     price: 200,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/Tavuk Kanat Durum.png",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/tavuk-kanat-durum.png",
   },
 
   // Çorbalar (4 adet)
@@ -326,7 +326,7 @@ const defaultAllMenuItems = [
     price: 40,
     category: "Çorbalar" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/mercimek corbasi.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/mercimek-corbasi.jpg",
   },
   {
     id: "c-02",
@@ -373,7 +373,7 @@ const defaultAllMenuItems = [
     price: 50,
     category: "Yan Ürünler" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Fresh%20Turkish%20seasonal%20salad%20with%20mixed%20vegetables%20tomatoes%20cucumbers%20onions%20on%20white%20plate%20professional%20food%20photography&width=400&height=300&seq=salata1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/mevsim-salatasi.jpeg",
   },
   {
     id: "y-03",
@@ -485,7 +485,7 @@ const defaultAllMenuItems = [
     price: 25,
     category: "İçecekler" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20shalgam%20turnip%20juice%20in%20tall%20glass%20traditional%20fermented%20drink%20purple%20color%20on%20white%20background%20professional%20beverage%20photography&width=400&height=300&seq=salgam1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/salgam.jpg",
   },
   {
     id: "i-05",
@@ -503,7 +503,7 @@ const defaultAllMenuItems = [
     price: 10,
     category: "İçecekler" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Bottled%20drinking%20water%20clear%20plastic%20bottle%20on%20white%20background%20simple%20clean%20professional%20photography&width=400&height=300&seq=su1&orientation=landscape",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/su.jpg",
   },
 ];
 
@@ -540,7 +540,7 @@ const defaultContent: ContentData = {
       price: 450,
       description: 'Özel baharatlarla hazırlanmış geleneksel Adana kebap',
       category: 'Kebaplar',
-      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/Adanaporsiyon.jpg'
+      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/adana-porsiyon.jpg'
     },
     {
       id: '2',
@@ -548,7 +548,7 @@ const defaultContent: ContentData = {
       price: 400,
       description: 'Kaşar, sucuk ve yumurtalı özel pide',
       category: 'Pideler',
-      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/karisikpide.jpeg'
+      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/karisik-pide.jpeg'
     },
     {
       id: '3',
@@ -556,7 +556,7 @@ const defaultContent: ContentData = {
       price: 130,
       description: 'İnce hamur üzerine özel kıymalı lahmacun',
       category: 'Lahmacunlar',
-      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/Lahmacun.jpg'
+      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/lahmacun.jpg'
     },
     {
       id: '4',
@@ -564,7 +564,7 @@ const defaultContent: ContentData = {
       price: 500,
       description: 'Taze döner eti, pilav ve salata ile servis',
       category: 'Kebaplar',
-      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/yemek resimleri/Porsiyon et döner.jpg'
+      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/porsiyon-et-doner.jpg'
     }
   ],
   allMenuItems: defaultAllMenuItems,
