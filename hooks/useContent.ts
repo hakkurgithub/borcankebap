@@ -30,7 +30,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana-porsiyon.jpg",
+    image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?w=400&h=300&fit=crop",
   },
   {
     id: "k-02",
@@ -39,7 +39,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Kebaplar & Izgaralar" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana-porsiyon.jpg",
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop",
   },
   {
     id: "k-03",
@@ -48,7 +48,7 @@ const defaultAllMenuItems = [
     price: 600,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/beyti-sarma.jpg",
+    image: "https://images.unsplash.com/photo-1577303935007-0d306ee291eb?w=400&h=300&fit=crop",
   },
   {
     id: "k-04",
@@ -57,7 +57,7 @@ const defaultAllMenuItems = [
     price: 500,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/iskender-kebap.jpeg"
+    image: "https://images.unsplash.com/photo-1559496417-e7f25cb247cd?w=400&h=300&fit=crop"
   },
   {
     id: "k-05",
