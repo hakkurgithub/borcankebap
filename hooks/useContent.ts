@@ -144,12 +144,12 @@ const defaultAllMenuItems = [
   },
   {
     id: "p-02",
-    name: "Kuşbaşılı Pide",
+    name: "Kuşbaşılı Pide", 
     description: "Kuşbaşı et ile pide",
     price: 450,
     category: "Pide & Lahmacun" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/kusbasili-pide.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/kusbasili-pide-2.jpg",
   },
   {
     id: "p-03",
@@ -279,7 +279,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana durum.jpg",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/urfa-durum.jpeg",
   },
   {
     id: "dr-03",
