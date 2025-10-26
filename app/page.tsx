@@ -9,44 +9,46 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
-        {/* Arka Plan Resmi */}
-        <Image
-          src="https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/hero.png" // ✅ Yeni hero görsel linki
-          alt="Borcan Kebap Ekibi ve Lezzetleri"
-          fill // Konteyneri doldurur
-          priority // Ana görsel olduğu için öncelikli yükle
-          className="object-cover brightness-75 object-top" // ✅ Resmi yukarı doğru hizala ve karart
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-        />
+      <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-gradient-to-br from-red-800 to-red-600 p-4">
+        
+        {/* Logo/Brand Görseli */}
+        <div className="relative z-10 mb-8 mt-24"> {/* ✅ mt-24 (üst boşluk) artırıldı */}
+          <Image
+            src="https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/hero.png"
+            alt="Borcan Kebap Alevli Logo"
+            width={350} // ✅ Genişlik 250'den 350'ye artırıldı
+            height={350} // ✅ Yükseklik 250'den 350'ye artırıldı
+            className="mx-auto drop-shadow-lg object-contain"
+            priority
+          />
+        </div>
 
-        {/* Metin ve İçerik (Metinlerin tam ortada kalması için) */}
-        <div className="relative z-10 text-white p-4 max-w-4xl mx-auto flex flex-col items-center justify-center h-full"> {/* ✅ h-full ve justify-center eklendi */}
+        {/* Metin ve Butonlar */}
+        <div className="relative z-10 text-white max-w-4xl mx-auto flex flex-col items-center justify-center">
           <h1 className="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">
             {content.restaurantName || "Borcan Kebap"}
           </h1>
           <p className="text-xl md:text-3xl mb-8 drop-shadow-md">
             {content.heroSubtitle || "Geleneksel Türk Lezzetleri"}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4"> {/* Butonları yan yana veya alt alta tutmak için */}
+          <div className="flex flex-col sm:flex-row gap-4">
             <a
               href="/menu"
-              className="bg-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-red-700 transition-colors shadow-lg"
+              className="bg-gray-800 bg-opacity-70 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-700 transition-colors shadow-lg"
             >
               Menüyü Gör
             </a>
-            {/* Rezervasyon Yap butonu, eğer aktifse */}
-            {/* <a
-              href="/reservation" // Rezervasyon sayfanızın yolu
-              className="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
+            <a
+              href="/reservation"
+              className="bg-yellow-500 text-gray-900 px-8 py-3 rounded-full text-lg font-semibold hover:bg-yellow-600 transition-colors shadow-lg"
             >
               Rezervasyon Yap
-            </a> */}
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Hakkımızda, Popüler Lezzetler, Bize Ulaşın bölümleri (önceki gibi kalabilir veya silebilirsiniz) */}
+      {/* Hakkımızda, Popüler Lezzetler, Bize Ulaşın bölümleri */}
       
       {/* Örnek: Hakkımızda Bölümü */}
       <section className="py-16 bg-white text-center">
@@ -63,7 +65,7 @@ export default function Home() {
           {content.menuItems?.map((item) => (
             <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <Image
-                src={item.image || "/images/placeholder.jpg"} // Eğer item.image yoksa varsayılan bir görsel kullan
+                src={item.image || "/images/placeholder.jpg"}
                 alt={item.name}
                 width={400}
                 height={250}
