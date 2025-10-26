@@ -30,7 +30,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://images.unsplash.com/photo-1592861956120-e524fc739696?w=400&h=300&fit=crop",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana-porsiyon.jpg",
   },
   {
     id: "k-02",
@@ -39,7 +39,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Kebaplar & Izgaralar" as const,
     rating: 4,
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop",
+    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana-porsiyon.jpg",
   },
   {
     id: "k-03",
