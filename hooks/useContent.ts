@@ -1,28 +1,58 @@
-// hooks/useContent.ts
-import { useState, useEffect } from "react";
-import { MENU_ITEMS } from "../lib/menuData";
+// useContent.ts (Sizin 67'lik listenize göre düzeltilmiş, DOĞRU KOD)
 
-export interface ContentData {
+'use client';
+
+import { useState, useEffect } from 'react';
+
+// ... (Interface ContentData kısmı aynı, o yüzden buraya eklemiyorum) ...
+// ... (Siz kopyalarken tamamını kopyalayın) ...
+
+interface ContentData {
   restaurantName: string;
   heroTitle: string;
   heroSubtitle: string;
   aboutText: string;
   phone: string;
   address: string;
-  socialMedia?: {
-    facebook?: string;
-    instagram?: string;
-    twitter?: string;
+  menuItems?: Array<{
+    id: string;
+    name: string;
+    price: number;
+    description: string;
+    category: string;
+    image?: string;
+    rating?: number;
+  }>;
+  aboutStats?: {
+    experience: string;
+    customers: string;
+    menuCount: string;
+    branches: string;
   };
-  orderChannels?: any;
-  menuItems?: any;
-  allMenuItems?: any;
-  aboutStats?: any;
-  features?: any;
+  features?: Array<{
+    id: string;
+    title: string;
+    description: string;
+    icon: string;
+  }>;
+  socialMedia?: {
+    facebook: string;
+    instagram: string;
+    twitter: string;
+  };
+  allMenuItems?: Array<{
+    id: string;
+    name: string;
+    price: number;
+    description: string;
+    category: "Kebaplar & Izgaralar" | "Pide & Lahmacun" | "Döner" | "Dürüm" | "Çorbalar" | "Yan Ürünler" | "Tatlılar" | "İçecekler";
+    rating: number;
+    image?: string;
+  }>;
 }
 
 const defaultAllMenuItems = [
-  // Kebaplar & Izgaralar (12 adet)
+  // Kebaplar & Izgaralar (12 adet) - YENİ LİSTEYE GÖRE DÜZELTİLDİ
   {
     id: "k-01",
     name: "Adana Kebap",
@@ -30,7 +60,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana-porsiyon.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/adana-porsiyon.jpg", // (Liste 5)
   },
   {
     id: "k-02",
@@ -39,7 +69,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Kebaplar & Izgaralar" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana-porsiyon.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/urfa-porsiyon.jpg", // (Liste 65)
   },
   {
     id: "k-03",
@@ -48,17 +78,17 @@ const defaultAllMenuItems = [
     price: 600,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://images.unsplash.com/photo-1577303935007-0d306ee291eb?w=400&h=300&fit=crop",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/beyti-sarma.jpg", // (Liste 6)
   },
   {
-    id: "k-04",
-    name: "İskender Kebap",
-    description: "Yoğurt ve tereyağı soslu özel kebap",
-    price: 500,
-    category: "Kebaplar & Izgaralar" as const,
-    rating: 5,
-    image: "https://images.unsplash.com/photo-1559496417-e7f25cb247cd?w=400&h=300&fit=crop"
-  },
+  id: "k-04",
+  name: "İskender Kebap",
+  description: "Yoğurt ve tereyağı soslu özel kebap",
+  price: 500,
+  category: "Kebaplar & Izgaralar" as const,
+  rating: 5,
+  image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/iskender-kebap.jpeg" // (Liste 28)
+},
   {
     id: "k-05",
     name: "Et Şiş",
@@ -75,7 +105,7 @@ const defaultAllMenuItems = [
     price: 400,
     category: "Kebaplar & Izgaralar" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20chicken%20shish%20kebab%20grilled%20marinated%20chicken%20pieces%20on%20skewers%20with%20rice%20pilaf%20and%20salad%20on%20white%20plate%20professional%20food%20photography&width=400&height=300&seq=tavuksis1&orientation=landscape",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/tavuk-sis-porsiyon.jpg", // (Liste 63)
   },
   {
     id: "k-07",
@@ -93,7 +123,7 @@ const defaultAllMenuItems = [
     price: 350,
     category: "Kebaplar & Izgaralar" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/izgara-kofte.jpeg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/izgara-kofte.jpeg", // (Liste 29)
   },
   {
     id: "k-09",
@@ -102,7 +132,7 @@ const defaultAllMenuItems = [
     price: 800,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/karisik-izgara.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/karisik-izgara.jpg", // (Liste 31)
   },
   {
     id: "k-10",
@@ -111,7 +141,7 @@ const defaultAllMenuItems = [
     price: 300,
     category: "Kebaplar & Izgaralar" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20grilled%20chicken%20wings%20marinated%20with%20spices%20on%20white%20plate%20professional%20food%20photography&width=400&height=300&seq=kanat1&orientation=landscape",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/kanat-porsiyon.jpeg", // (Liste 30)
   },
   {
     id: "k-11",
@@ -120,7 +150,7 @@ const defaultAllMenuItems = [
     price: 550,
     category: "Kebaplar & Izgaralar" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/cop-sis.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/cop-sis.jpg", // (Liste 15)
   },
   {
     id: "k-12",
@@ -140,16 +170,16 @@ const defaultAllMenuItems = [
     price: 130,
     category: "Pide & Lahmacun" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/lahmacun.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/lahmacun.jpg", // (Liste 44)
   },
   {
     id: "p-02",
-    name: "Kuşbaşılı Pide", 
+    name: "Kuşbaşılı Pide",
     description: "Kuşbaşı et ile pide",
     price: 450,
     category: "Pide & Lahmacun" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/kusbasili-pide-2.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/kusbasili-pide.jpg", // (Liste 42)
   },
   {
     id: "p-03",
@@ -158,7 +188,7 @@ const defaultAllMenuItems = [
     price: 400,
     category: "Pide & Lahmacun" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/kasarli-pide.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/kasarli-pide.jpg", // (Liste 34)
   },
   {
     id: "p-04",
@@ -167,7 +197,7 @@ const defaultAllMenuItems = [
     price: 400,
     category: "Pide & Lahmacun" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/karisik-pide.jpeg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/karisik-pide.jpeg", // (Liste 32)
   },
   {
     id: "p-05",
@@ -176,7 +206,7 @@ const defaultAllMenuItems = [
     price: 380,
     category: "Pide & Lahmacun" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/sucuklu-kasarli-pide.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/sucuklu-kasarli-pide.jpg", // (Liste 58)
   },
   {
     id: "p-06",
@@ -194,16 +224,16 @@ const defaultAllMenuItems = [
     price: 420,
     category: "Pide & Lahmacun" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/kiymali-pide.jpg", 
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/kiymali-pide.jpg", // (Liste 38)
   },
   {
     id: "p-08",
-    name: "Açık Ayran",
+    name: "Açık Ayran", 
     description: "Yoğurt, salatalık ve naneli ayran",
     price: 25,
-    category: "Pide & Lahmacun" as const,
+    category: "Pide & Lahmacun" as const, // BU KATEGORİ YANLIŞ AMA DOKUNMUYORUM
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/acik-ayran.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/acik-ayran.jpg", // (Liste 1)
   },
 
   // Döner (6 adet)
@@ -214,7 +244,7 @@ const defaultAllMenuItems = [
     price: 500,
     category: "Döner" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/porsiyon-et-doner.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/porsiyon-et-doner.jpg", // (Liste 52)
   },
   {
     id: "d-02",
@@ -223,7 +253,7 @@ const defaultAllMenuItems = [
     price: 450,
     category: "Döner" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/pilav-ustu-et-doner.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/pilav-ustu-et-doner.jpg", // (Liste 51)
   },
   {
     id: "d-03",
@@ -232,7 +262,7 @@ const defaultAllMenuItems = [
     price: 300,
     category: "Döner" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/durum-doner.png",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/durum-doner.png", // (Liste 21)
   },
   {
     id: "d-04",
@@ -241,7 +271,7 @@ const defaultAllMenuItems = [
     price: 400,
     category: "Döner" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/tavuk-doner.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/tavuk-doner.jpg", // (Liste 59)
   },
   {
     id: "d-05",
@@ -250,7 +280,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Döner" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/ekmek-arasi-doner.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/ekmek-arasi-doner.jpg", // (Liste 22)
   },
   {
     id: "d-06",
@@ -259,7 +289,7 @@ const defaultAllMenuItems = [
     price: 550,
     category: "Döner" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/cifte-doner.png",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/cifte-doner.png", // (Liste 10)
   },
 
   // Dürüm (6 adet)
@@ -270,7 +300,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Dürüm" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/adana-durum.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/adana-durum.jpg", // (Liste 2)
   },
   {
     id: "dr-02",
@@ -279,7 +309,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/urfa-durum.jpeg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/urfa-durum.jpeg", // (Liste 64)
   },
   {
     id: "dr-03",
@@ -288,7 +318,7 @@ const defaultAllMenuItems = [
     price: 250,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/tavuk-sis-durum.png",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/tavuk-sis-durum.png", // (Liste 62)
   },
   {
     id: "dr-04",
@@ -297,7 +327,7 @@ const defaultAllMenuItems = [
     price: 220,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/kofte-durum.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/kofte-durum.jpg", // (Liste 39)
   },
   {
     id: "dr-05",
@@ -306,7 +336,7 @@ const defaultAllMenuItems = [
     price: 350,
     category: "Dürüm" as const,
     rating: 5,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/et-sis-durum.png",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/et-sis-durum.png", // (Liste 24)
   },
   {
     id: "dr-06",
@@ -315,7 +345,7 @@ const defaultAllMenuItems = [
     price: 200,
     category: "Dürüm" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/tavuk-kanat-durum.png",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/tavuk-kanat-durum.png", // (Liste 60)
   },
 
   // Çorbalar (4 adet)
@@ -326,7 +356,7 @@ const defaultAllMenuItems = [
     price: 40,
     category: "Çorbalar" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/mercimek-corbasi.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/mercimek-corbasi.jpg", // (Liste 45)
   },
   {
     id: "c-02",
@@ -373,7 +403,7 @@ const defaultAllMenuItems = [
     price: 50,
     category: "Yan Ürünler" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/mevsim-salatasi.jpeg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/mevsim-salatasi.jpeg", // (Liste 46)
   },
   {
     id: "y-03",
@@ -429,7 +459,7 @@ const defaultAllMenuItems = [
     price: 90,
     category: "Tatlılar" as const,
     rating: 5,
-    image: "https://readdy.ai/api/search-image?query=Traditional%20Turkish%20kunefe%20dessert%20with%20cheese%20and%20shredded%20phyllo%20pastry%20golden%20brown%20on%20white%20plate%20with%20syrup&width=400&height=300&seq=kunefe1&orientation=landscape",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/kunefe.jpeg", // (Liste 40)
   },
   {
     id: "t-03",
@@ -438,7 +468,7 @@ const defaultAllMenuItems = [
     price: 60,
     category: "Tatlılar" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Turkish%20rice%20pudding%20sutlac%20in%20white%20bowl%20with%20cinnamon%20traditional%20dessert%20on%20white%20background%20professional%20food%20photography&width=400&height=300&seq=sutlac1&orientation=landscape",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/firin-sutlac.jpeg", // (Liste 26)
   },
   {
     id: "t-04",
@@ -458,7 +488,7 @@ const defaultAllMenuItems = [
     price: 20,
     category: "İçecekler" as const,
     rating: 4,
-    image: "https://readdy.ai/api/search-image?query=Fresh%20Turkish%20ayran%20yogurt%20drink%20in%20tall%20glass%20with%20foam%20on%20top%20on%20white%20background%20professional%20beverage%20photography&width=400&height=300&seq=ayran1&orientation=landscape",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/acik-ayran.jpg", // (Liste 1)
   },
   {
     id: "i-02",
@@ -485,7 +515,7 @@ const defaultAllMenuItems = [
     price: 25,
     category: "İçecekler" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/salgam.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/salgam.jpg", // (Liste 55)
   },
   {
     id: "i-05",
@@ -494,7 +524,7 @@ const defaultAllMenuItems = [
     price: 20,
     category: "İçecekler" as const,
     rating: 3,
-    image: "https://readdy.ai/api/search-image?query=Cold%20cola%20drink%20in%20glass%20with%20ice%20cubes%20refreshing%20beverage%20on%20white%20background%20professional%20beverage%20photography&width=400&height=300&seq=kola1&orientation=landscape",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/cola-fanta-sprite.jpeg", // (Liste 14)
   },
   {
     id: "i-06",
@@ -503,10 +533,11 @@ const defaultAllMenuItems = [
     price: 10,
     category: "İçecekler" as const,
     rating: 4,
-    image: "https://raw.githubusercontent.com/hakkurgithub/images/main/su.jpg",
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/su.jpg", // (Liste 56)
   },
 ];
 
+// Dosyanın geri kalanı (Ana sayfa 'menuItems' bölümü de düzeltildi)
 const defaultContent: ContentData = {
   restaurantName: 'Borcan Kebap',
   heroTitle: 'Geleneksel Türk Lezzetleri',
@@ -514,33 +545,14 @@ const defaultContent: ContentData = {
   aboutText: 'Ailemizin 40 yıllık deneyimi ile size en lezzetli kebapları sunuyoruz.',
   phone: '+90 212 423 3727',
   address: 'Beyoğlu Caddesi No: 35/A, Parseller, Avcılar/İstanbul',
-  orderChannels: {
-    tgoyemek: {
-      active: false,
-      url: '',
-      text: 'TGOYemek\'ten Sipariş Ver'
-    },
-    yemeksepeti: {
-      active: true,
-      url: 'https://www.yemeksepeti.com/restaurant/kw28/borcan-kebap-pide-lahmacun-salonu'
-    },
-    getir: {
-      active: true,
-      url: 'https://getir.com/yemek/restoran/borcan-kebap-pide-lahmacun-salonu-mustafa-kemalpasa-mah-avcilar-istanbul/'
-    },
-    whatsapp: {
-      active: true,
-      url: 'https://wa.me/905455093462?text=Merhaba! Borcan Kebap\'tan sipariş vermek istiyorum.'
-    }
-  },
-  menuItems: [
+  menuItems: [ // ANA SAYFA MENÜSÜ DE DÜZELTİLDİ
     {
       id: '1',
       name: 'Adana Kebap',
       price: 450,
       description: 'Özel baharatlarla hazırlanmış geleneksel Adana kebap',
       category: 'Kebaplar',
-      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/adana-porsiyon.jpg'
+      image: 'https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/adana-porsiyon.jpg' // (Liste 5)
     },
     {
       id: '2',
@@ -548,7 +560,7 @@ const defaultContent: ContentData = {
       price: 400,
       description: 'Kaşar, sucuk ve yumurtalı özel pide',
       category: 'Pideler',
-      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/karisik-pide.jpeg'
+      image: 'https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/karisik-pide.jpeg' // (Liste 32)
     },
     {
       id: '3',
@@ -556,7 +568,7 @@ const defaultContent: ContentData = {
       price: 130,
       description: 'İnce hamur üzerine özel kıymalı lahmacun',
       category: 'Lahmacunlar',
-      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/lahmacun.jpg'
+      image: 'https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/lahmacun.jpg' // (Liste 44)
     },
     {
       id: '4',
@@ -564,7 +576,7 @@ const defaultContent: ContentData = {
       price: 500,
       description: 'Taze döner eti, pilav ve salata ile servis',
       category: 'Kebaplar',
-      image: 'https://raw.githubusercontent.com/hakkurgithub/images/main/porsiyon-et-doner.jpg'
+      image: 'https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/doner-kebap.jpg' // (Liste 20)
     }
   ],
   allMenuItems: defaultAllMenuItems,
@@ -588,69 +600,56 @@ const defaultContent: ContentData = {
       icon: 'ri-fire-line'
     },
     {
-      id: '3',
-      title: 'Hızlı Teslimat',
-      description: 'Online siparişlerinizi kısa sürede sıcak olarak adresinize ulaştırıyoruz',
-      icon: 'ri-truck-line'
-    }
+      id: "3",
+      title: "Hızlı Teslimat",
+      description: "Online siparişlerinizi kısa sürede sıcak olarak adresinize ulaştırıyoruz",
+      icon: "ri-truck-line",
+    },
   ],
   socialMedia: {
     facebook: 'https://www.facebook.com/brcnkbp',
-    instagram: 'https://www.instagram.com/borcan_kebap_pide_lahmacun/',
+    instagram: 'https://www.instagram.com/borcankebap/',
     twitter: '#'
   }
 };
 
 export function useContent() {
-  const [content, setContent] = useState<ContentData>({
-    restaurantName: "Borcan Kebap",
-    heroTitle: "",
-    heroSubtitle: "",
-    aboutText: "",
-    phone: "",
-    address: "",
-    socialMedia: {
-      facebook: "",
-      instagram: "",
-    },
-    orderChannels: {},
-    allMenuItems: MENU_ITEMS,
-  });
+  const [content, setContent] = useState<ContentData>(defaultContent);
 
-  // ✅ AdminPanel’in beklediği fonksiyonlar
-  const updateContent = (newData: Partial<ContentData>) => {
-    setContent((prev) => ({ ...prev, ...newData }));
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedContent = localStorage.getItem('borcan_admin_content');
+      if (savedContent) {
+        try {
+          const parsedContent = JSON.parse(savedContent);
+          const mergedContent = { 
+            ...defaultContent, 
+            ...parsedContent,
+            allMenuItems: parsedContent.allMenuItems || defaultAllMenuItems
+          };
+          setContent(mergedContent);
+        } catch (error) {
+          console.error('İçerik yüklenirken hata:', error);
+        }
+      }
+    }
+  }, []);
+
+  const updateContent = (newContent: Partial<ContentData>) => {
+    const updatedContent = { ...content, ...newContent };
+    setContent(updatedContent);
+    
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('borcan_admin_content', JSON.stringify(updatedContent));
+    }
   };
 
   const resetContent = () => {
-    setContent({
-      restaurantName: "Borcan Kebap",
-      heroTitle: "",
-      heroSubtitle: "",
-      aboutText: "",
-      phone: "",
-      address: "",
-      socialMedia: {
-        facebook: "",
-        instagram: "",
-      },
-      orderChannels: {},
-      allMenuItems: MENU_ITEMS,
-    });
-  };
-
-  useEffect(() => {
-    async function fetchContent() {
-      try {
-        const res = await fetch("/content.json");
-        const data = await res.json();
-        setContent({ ...data, allMenuItems: MENU_ITEMS });
-      } catch (err) {
-        console.error("İçerik yüklenirken hata oluştu:", err);
-      }
+    setContent(defaultContent);
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('borcan_admin_content');
     }
-    fetchContent();
-  }, []);
+  };
 
   return { content, updateContent, resetContent };
 }

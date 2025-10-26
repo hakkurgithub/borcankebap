@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useCart } from "@/components/CartProvider";
 import { useContent } from "@/hooks/useContent";
-import Image from "next/image";
 
 export default function MenuPage() {
     const { content } = useContent();
@@ -79,11 +78,10 @@ export default function MenuPage() {
                                 className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-300"
                             >
                                 <div className="relative w-full h-48">
-                                    <Image
+                                    <img
                                         src={item.image}
                                         alt={item.name}
-                                        fill
-                                        className="object-cover"
+                                        className="w-full h-full object-cover"
                                     />
                                 </div>
                                 <div className="p-5 flex-1 flex flex-col">

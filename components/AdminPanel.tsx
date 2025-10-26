@@ -41,34 +41,38 @@ export default function AdminPanel({ isOpen = true, onClose }: AdminPanelProps) 
       {/* Genel Bilgiler */}
       <div className="bg-white p-6 rounded-lg shadow mb-6">
         <h2 className="text-xl font-semibold mb-4">Restoran Bilgileri</h2>
-        <label className="block mb-2 font-medium">Restoran Adı</label>
+        <label htmlFor="restaurant-name" className="block mb-2 font-medium">Restoran Adı</label>
         <input
+          id="restaurant-name"
           type="text"
           className="w-full border rounded p-2 mb-4"
-          value={localContent.restaurantName}
+          value={localContent.restaurantName || ""}
           onChange={(e) => setLocalContent({ ...localContent, restaurantName: e.target.value })}
         />
 
-        <label className="block mb-2 font-medium">Açıklama</label>
+        <label htmlFor="about-text" className="block mb-2 font-medium">Açıklama</label>
         <textarea
+          id="about-text"
           className="w-full border rounded p-2 mb-4"
-          value={localContent.aboutText}
+          value={localContent.aboutText || ""}
           onChange={(e) => setLocalContent({ ...localContent, aboutText: e.target.value })}
         />
 
-        <label className="block mb-2 font-medium">Adres</label>
+        <label htmlFor="address" className="block mb-2 font-medium">Adres</label>
         <input
+          id="address"
           type="text"
           className="w-full border rounded p-2 mb-4"
-          value={localContent.address}
+          value={localContent.address || ""}
           onChange={(e) => setLocalContent({ ...localContent, address: e.target.value })}
         />
 
-        <label className="block mb-2 font-medium">Telefon</label>
+        <label htmlFor="phone" className="block mb-2 font-medium">Telefon</label>
         <input
+          id="phone"
           type="text"
           className="w-full border rounded p-2 mb-4"
-          value={localContent.phone}
+          value={localContent.phone || ""}
           onChange={(e) => setLocalContent({ ...localContent, phone: e.target.value })}
         />
       </div>
@@ -136,9 +140,9 @@ export default function AdminPanel({ isOpen = true, onClose }: AdminPanelProps) 
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {localContent.allMenuItems?.map((item: MenuItem, i: number) => (
+          {localContent.allMenuItems?.map((item, i: number) => (
             <div
-              key={i}
+              key={item.id || i}
               className="border rounded p-4 flex flex-col bg-gray-50 hover:bg-gray-100 transition"
             >
               <span className="font-semibold text-lg">{item.name}</span>
