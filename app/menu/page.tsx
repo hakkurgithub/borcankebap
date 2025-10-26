@@ -1,20 +1,42 @@
 'use client';
 
 import { useState, useEffect } from "react";
+import Image from "next/image"; // ✅ Next.js Image bileşenini import et
 import { useCart } from "@/components/CartProvider";
 import { useContent } from "@/hooks/useContent";
 
+// Tipleri tanımla (veya varsa menuData.ts'den import et)
+type MenuCategory =
+  | "Kebaplar & Izgaralar"
+  | "Pide & Lahmacun"
+  | "Döner"
+  | "Dürüm"
+  | "Çorbalar"
+  | "Yan Ürünler"
+  | "Tatlılar"
+  | "İçecekler";
+
+interface MenuItem {
+  id: string;
+  name: string;
+  price: number;
+  description: string;
+  category: MenuCategory;
+  image?: string; // Resmin opsiyonel olduğunu belirt
+  rating: number;
+}
+
 export default function MenuPage() {
     const { content } = useContent();
-    const { addItem, items } = useCart(); // ✅ Sepet içeriğini de alıyoruz
-    const [activeCategory, setActiveCategory] = useState("all");
+    const { addItem, items } = useCart();
+    const [activeCategory, setActiveCategory] = useState<MenuCategory | "all">("all");
     const [isClient, setIsClient] = useState(false);
 
     useEffect(() => {
         setIsClient(true);
     }, []);
 
-    const categories = [
+    const categories: (MenuCategory | "all")[] = [
         "all",
         "Kebaplar & Izgaralar",
         "Pide & Lahmacun",
@@ -26,11 +48,13 @@ export default function MenuPage() {
         "İçecekler"
     ];
 
-    const filteredItems = content.allMenuItems?.filter((item: any) =>
+    // ✅ 'any' tipi yerine 'MenuItem' kullanıldı
+    const filteredItems = content.allMenuItems?.filter((item: MenuItem) =>
         activeCategory === "all" ? true : item.category === activeCategory
     );
 
-    const handleAddToCart = (item: any) => {
+    // ✅ 'any' tipi yerine 'MenuItem' kullanıldı
+    const handleAddToCart = (item: MenuItem) => {
         addItem({
             id: item.id,
             name: item.name,
@@ -39,7 +63,7 @@ export default function MenuPage() {
     };
 
     if (!isClient) {
-        return null;
+        return null; // Sunucu tarafında render edilmesini engelle (hydration hatası için)
     }
 
     return (
@@ -68,8 +92,8 @@ export default function MenuPage() {
 
                 {/* Menu Items Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredItems?.map((item: any) => {
-                        // ✅ Sepette bu ürünün olup olmadığını kontrol et
+                    {/* ✅ 'any' tipi yerine 'MenuItem' kullanıldı */}
+                    {filteredItems?.map((item: MenuItem, index: number) => {
                         const cartItem = items.find(cartItem => cartItem.id === item.id);
                         
                         return (
@@ -77,13 +101,26 @@ export default function MenuPage() {
                                 key={item.id}
                                 className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-300"
                             >
-                                <div className="relative w-full h-48">
-                                    <img
-                                        src={item.image}
-                                        alt={item.name}
-                                        className="w-full h-full object-cover"
-                                    />
+                                {/* ▼▼▼ <img> DEĞİŞİKLİĞİ BURADA BAŞLIYOR ▼▼▼ */}
+                                <div className="relative w-full h-48 bg-gray-200">
+                                    {item.image ? (
+                                        <Image
+                                            src={item.image}
+                                            alt={item.name}
+                                            fill // Konteyneri doldur (width/height yerine)
+                                            className="object-cover" // object-fit: cover
+                                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" // Farklı ekran boyutları için optimizasyon
+                                            priority={index < 3} // İlk 3 resmi öncelikli yükle
+                                        />
+                                    ) : (
+                                        // Resim yoksa bir placeholder (yer tutucu) göster
+                                        <div className="flex items-center justify-center h-full">
+                                            <i className="ri-image-line text-4xl text-gray-400"></i>
+                                        </div>
+                                    )}
                                 </div>
+                                {/* ▲▲▲ <img> DEĞİŞİKLİĞİ BURADA BİTİYOR ▲▲▲ */}
+
                                 <div className="p-5 flex-1 flex flex-col">
                                     <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
                                     <p className="text-gray-600 text-sm flex-1">{item.description}</p>

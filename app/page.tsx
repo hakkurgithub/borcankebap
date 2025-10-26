@@ -1,195 +1,91 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import { useContent } from '@/hooks/useContent';
-import { useCart } from '@/components/CartProvider';
-import WhatsAppOrderModal from '@/components/WhatsAppOrderModal';
-import ReservationModal from '@/components/ReservationModal';
-import AdminPanel from '@/components/AdminPanel';
-import { adminConfig } from '@/lib/admin';
+import { useContent } from "@/hooks/useContent";
 
 export default function Home() {
   const { content } = useContent();
-  const { addItem } = useCart();
-  const [showReservationModal, setShowReservationModal] = useState(false);
-  const [showWhatsAppModal, setShowWhatsAppModal] = useState(false);
-  const [showAdminPanel, setShowAdminPanel] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const handleAddToCart = (item: any) => {
-    addItem({ id: item.id, name: item.name, price: item.price });
-  };
-
-  const handleAdminClick = () => {
-    const password = prompt("Yönetici paneline erişim için şifreyi girin:");
-    if (password === adminConfig.password) {
-      setShowAdminPanel(true);
-    } else {
-      alert("Hatalı şifre. Lütfen tekrar deneyin.");
-    }
-  };
-
-  if (!isClient) {
-    return null;
-  }
-
-  const popularItems = (content.allMenuItems || []).slice(0, 4);
-
-  const aboutText = content.aboutText || "Borcan Kebap, 1985 yılından beri geleneksel Türk mutfağının eşsiz lezzetlerini sunmaktadır. Aileden gelen 40 yıllık deneyimimizle, her yemeğimizde kaliteyi ve tazeliği hissedersiniz.";
 
   return (
-    <div className="bg-gray-50 text-gray-800">
+    <div className="relative min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section
-        className="relative w-full h-[500px] flex items-center justify-center text-white text-center overflow-hidden"
-        style={{
-          backgroundImage: `url('https://raw.githubusercontent.com/hakkurgithub/images/main/Borcan-kebap-personeli.png')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative z-10 p-4">
-          <h1 className="text-4xl sm:text-6xl font-extrabold mb-4 font-['Pacifico'] leading-tight">
-            {content.restaurantName}
+      <section className="relative w-full h-screen flex items-center justify-center text-center overflow-hidden">
+        {/* Arka Plan Resmi */}
+        <Image
+          src="https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/hero.png" // ✅ Yeni hero görsel linki
+          alt="Borcan Kebap Ekibi ve Lezzetleri"
+          fill // Konteyneri doldurur
+          priority // Ana görsel olduğu için öncelikli yükle
+          className="object-cover brightness-75 object-top" // ✅ Resmi yukarı doğru hizala ve karart
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+        />
+
+        {/* Metin ve İçerik (Metinlerin tam ortada kalması için) */}
+        <div className="relative z-10 text-white p-4 max-w-4xl mx-auto flex flex-col items-center justify-center h-full"> {/* ✅ h-full ve justify-center eklendi */}
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">
+            {content.restaurantName || "Borcan Kebap"}
           </h1>
-          <p className="text-lg sm:text-xl font-light mb-6">
-            {content.heroTitle}
+          <p className="text-xl md:text-3xl mb-8 drop-shadow-md">
+            {content.heroSubtitle || "Geleneksel Türk Lezzetleri"}
           </p>
-          <div className="flex justify-center space-x-4">
-            <Link
+          <div className="flex flex-col sm:flex-row gap-4"> {/* Butonları yan yana veya alt alta tutmak için */}
+            <a
               href="/menu"
-              className="bg-red-600 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-red-700 transition-transform transform hover:scale-105 shadow-lg"
+              className="bg-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-red-700 transition-colors shadow-lg"
             >
               Menüyü Gör
-            </Link>
-            <button
-              onClick={() => setShowReservationModal(true)}
-              className="bg-white text-red-600 px-6 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition-transform transform hover:scale-105 shadow-lg"
+            </a>
+            {/* Rezervasyon Yap butonu, eğer aktifse */}
+            {/* <a
+              href="/reservation" // Rezervasyon sayfanızın yolu
+              className="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors shadow-lg"
             >
               Rezervasyon Yap
-            </button>
+            </a> */}
           </div>
         </div>
       </section>
 
-      {/* Popüler Ürünler */}
-      <section className="py-16 px-4">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">
-            Popüler Lezzetler
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {popularItems.map((item: any) => (
-              <div
-                key={item.id}
-                className="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-shadow duration-300"
-              >
-                <div className="relative w-full h-48">
-                  <Image
-                    src={item.image}
-                    alt={item.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-5 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
-                  <p className="text-gray-600 text-sm flex-1">{item.description}</p>
-                  <div className="flex justify-between items-center mt-4">
-                    <span className="text-2xl font-bold text-red-600">
-                      {item.price}₺
-                    </span>
-                    <button
-                      onClick={() => handleAddToCart(item)}
-                      className="bg-red-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors"
-                    >
-                      <i className="ri-shopping-cart-fill mr-2"></i>Ekle
-                    </button>
-                  </div>
-                </div>
+      {/* Hakkımızda, Popüler Lezzetler, Bize Ulaşın bölümleri (önceki gibi kalabilir veya silebilirsiniz) */}
+      
+      {/* Örnek: Hakkımızda Bölümü */}
+      <section className="py-16 bg-white text-center">
+        <h2 className="text-3xl font-bold text-red-600 mb-6">Hakkımızda</h2>
+        <p className="max-w-3xl mx-auto px-4 text-gray-700">
+          {content.aboutText || 'Ailemizin 40 yıllık deneyimi ile size en lezzetli kebapları sunuyoruz.'}
+        </p>
+      </section>
+
+      {/* Örnek: Popüler Lezzetler */}
+      <section className="py-16 bg-gray-100">
+        <h2 className="text-3xl font-bold text-center text-red-600 mb-8">Popüler Lezzetler</h2>
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {content.menuItems?.map((item) => (
+            <div key={item.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+              <Image
+                src={item.image || "/images/placeholder.jpg"} // Eğer item.image yoksa varsayılan bir görsel kullan
+                alt={item.name}
+                width={400}
+                height={250}
+                className="w-full h-48 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
+                <p className="text-gray-600 text-sm mb-3">{item.description}</p>
+                <span className="text-lg font-bold text-red-600">{item.price}₺</span>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Hakkımızda Section */}
-      <section className="bg-white py-16 px-4">
-        <div className="container mx-auto flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2 relative h-[350px] rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src="/images/about.jpg"
-              alt="Hakkımızda"
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div className="md:w-1/2">
-            <h2 className="text-4xl font-bold mb-6">
-              Hakkımızda
-            </h2>
-            <p className="text-gray-700 leading-relaxed mb-6">
-              {aboutText}
-            </p>
-            <Link
-              href="/about"
-              className="bg-red-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-red-700 transition-colors shadow-md"
-            >
-              Daha Fazla Oku
-            </Link>
-          </div>
-        </div>
+      {/* İletişim Bilgileri */}
+      <section className="py-16 bg-white text-center">
+        <h2 className="text-3xl font-bold text-red-600 mb-6">Bize Ulaşın</h2>
+        <p className="text-gray-700 mb-2">Telefon: {content.phone}</p>
+        <p className="text-gray-700">{content.address}</p>
       </section>
 
-      {/* İletişim Section */}
-      <section className="py-16 px-4 bg-gray-100">
-        <div className="container mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">İletişim</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-xl shadow-lg text-center">
-              <i className="ri-map-pin-line text-4xl text-red-600 mb-4"></i>
-              <h3 className="text-xl font-semibold mb-2">Adres</h3>
-              <p className="text-gray-700">
-                {content.address}
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg text-center">
-              <i className="ri-phone-line text-4xl text-red-600 mb-4"></i>
-              <h3 className="text-xl font-semibold mb-2">Telefon</h3>
-              <p className="text-gray-700">
-                {content.phone}
-              </p>
-            </div>
-            <div className="bg-white p-8 rounded-xl shadow-lg text-center">
-              <i className="ri-mail-line text-4xl text-red-600 mb-4"></i>
-              <h3 className="text-xl font-semibold mb-2">E-posta</h3>
-              <p className="text-gray-700">info@borcankebap.com</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Admin ve Modallar */}
-      {isClient && (
-        <div className="fixed bottom-6 right-6 z-50">
-          <button
-            onClick={handleAdminClick}
-            className="w-12 h-12 bg-gray-800 text-white rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors shadow-lg"
-            title="Admin Girişi"
-          >
-            <i className="ri-admin-line text-lg"></i>
-          </button>
-        </div>
-      )}
-
-      <ReservationModal isOpen={showReservationModal} onClose={() => setShowReservationModal(false)} />
-      <WhatsAppOrderModal isOpen={showWhatsAppModal} onClose={() => setShowWhatsAppModal(false)} />
-      {isClient && <AdminPanel isOpen={showAdminPanel} onClose={() => setShowAdminPanel(false)} />}
     </div>
   );
 }
