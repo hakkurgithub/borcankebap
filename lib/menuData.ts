@@ -495,7 +495,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 25,
     description: "Çeşitli aromalarda ferahlatıcı soda.",
     category: "İçecekler",
-    image: "httpsC:\Users\Admin\AppData\Local\Temp\gemini-temp-vj4m4.tmp", // Düzeltildi
+    image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/meyvelisoda.jpeg", // Düzeltildi
     rating: 5,
   },
   {
