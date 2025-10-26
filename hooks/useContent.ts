@@ -4,9 +4,6 @@
 
 import { useState, useEffect } from 'react';
 
-// ... (Interface ContentData kısmı aynı, o yüzden buraya eklemiyorum) ...
-// ... (Siz kopyalarken tamamını kopyalayın) ...
-
 interface ContentData {
   restaurantName: string;
   heroTitle: string;
@@ -52,7 +49,7 @@ interface ContentData {
 }
 
 const defaultAllMenuItems = [
-  // Kebaplar & Izgaralar (12 adet) - YENİ LİSTEYE GÖRE DÜZELTİLDİ
+  // Kebaplar & Izgaralar (12 adet)
   {
     id: "k-01",
     name: "Adana Kebap",
@@ -228,10 +225,10 @@ const defaultAllMenuItems = [
   },
   {
     id: "p-08",
-    name: "Açık Ayran", 
+    name: "Açık Ayran",
     description: "Yoğurt, salatalık ve naneli ayran",
     price: 25,
-    category: "Pide & Lahmacun" as const, // BU KATEGORİ YANLIŞ AMA DOKUNMUYORUM
+    category: "Pide & Lahmacun" as const,
     rating: 4,
     image: "https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/acik-ayran.jpg", // (Liste 1)
   },
