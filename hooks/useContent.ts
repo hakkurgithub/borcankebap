@@ -625,7 +625,7 @@ export function useContent() {
   const resetContent = () => {
     setContent({
       restaurantName: "Borcan Kebap",
-      heroTitle: "",https://github.com/hakkurgithub/borcankebap/blob/main/hooks/useContent.ts
+      heroTitle: "",
       heroSubtitle: "",
       aboutText: "",
       phone: "",
