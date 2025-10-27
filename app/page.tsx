@@ -8,47 +8,64 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen bg-gray-50">
+      
       {/* Hero Section */}
       <section className="relative w-full h-screen flex flex-col items-center justify-center text-center overflow-hidden bg-gradient-to-br from-red-800 to-red-600 p-4">
         
-        {/* Logo/Brand Görseli */}
-        <div className="relative z-10 mb-8 mt-24"> {/* ✅ mt-24 (üst boşluk) artırıldı */}
-          <Image
-            src="https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/hero.png"
-            alt="Borcan Kebap Alevli Logo"
-            width={350} // ✅ Genişlik 250'den 350'ye artırıldı
-            height={350} // ✅ Yükseklik 250'den 350'ye artırıldı
-            className="mx-auto drop-shadow-lg object-contain"
-            priority
-          />
-        </div>
-
-        {/* Metin ve Butonlar */}
-        <div className="relative z-10 text-white max-w-4xl mx-auto flex flex-col items-center justify-center">
+        {/* Metin Bölümü (Başlık ve Alt Başlık) */}
+        {/* Butonlardan ve logodan önce görünmesi için bu bölümü üste aldık. */}
+        <div className="relative z-10 text-white max-w-4xl mx-auto flex flex-col items-center justify-center mb-8 mt-20"> {/* mt-24'ü logonun boyutuyla dengelemek için biraz ayarlandı */}
           <h1 className="text-5xl md:text-7xl font-bold mb-4 drop-shadow-lg">
             {content.restaurantName || "Borcan Kebap"}
           </h1>
           <p className="text-xl md:text-3xl mb-8 drop-shadow-md">
             {content.heroSubtitle || "Geleneksel Türk Lezzetleri"}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              href="/menu"
-              className="bg-gray-800 bg-opacity-70 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-700 transition-colors shadow-lg"
-            >
-              Menüyü Gör
-            </a>
-            <a
-              href="/reservation"
-              className="bg-yellow-500 text-gray-900 px-8 py-3 rounded-full text-lg font-semibold hover:bg-yellow-600 transition-colors shadow-lg"
-            >
-              Rezervasyon Yap
-            </a>
-          </div>
         </div>
+
+        {/* === GÜNCELLENEN ALAN === */}
+        {/* Görsel ve Butonlar için Yatay Kapsayıcı */}
+        {/* Mobilde: flex-col (alt alta)
+          Masaüstünde (md): flex-row (yan yana)
+        */}
+        <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 w-full max-w-6xl px-4">
+          
+          {/* Sol Buton: Menüyü Gör */}
+          <a
+            href="/menu"
+            className="bg-gray-800 bg-opacity-70 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-700 transition-colors shadow-lg 
+                       order-2 md:order-1 w-full sm:w-auto" // Mobilde 2. sırada, Masaüstünde 1. sırada (solda)
+          >
+            Menüyü Gör
+          </a>
+          
+          {/* Orta Görsel: Logo */}
+          <div className="relative z-10 order-1 md:order-2"> {/* Mobilde 1. sırada (en üstte), Masaüstünde 2. sırada (ortada) */}
+            <Image
+              src="https://cdn.jsdelivr.net/gh/hakkurgithub/images@main/hero.png"
+              alt="Borcan Kebap Alevli Logo"
+              width={350} // Genişlik korundu
+              height={350} // Yükseklik korundu
+              className="mx-auto drop-shadow-lg object-contain"
+              priority
+            />
+          </div>
+
+          {/* Sağ Buton: Rezervasyon Yap */}
+          <a
+            href="/reservation"
+            className="bg-yellow-500 text-gray-900 px-8 py-3 rounded-full text-lg font-semibold hover:bg-yellow-600 transition-colors shadow-lg 
+                       order-3 md:order-3 w-full sm:w-auto" // Mobilde 3. sırada, Masaüstünde 3. sırada (sağda)
+          >
+            Rezervasyon Yap
+          </a>
+        </div>
+        {/* === GÜNCELLEME BİTTİ === */}
+
       </section>
 
       {/* Hakkımızda, Popüler Lezzetler, Bize Ulaşın bölümleri */}
+      {/* Bu bölümlerde bir değişiklik yapılmadı */}
       
       {/* Örnek: Hakkımızda Bölümü */}
       <section className="py-16 bg-white text-center">
